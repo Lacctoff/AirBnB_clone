@@ -6,6 +6,7 @@ Module containing the BaseModel class
 import uuid
 from datetime import datetime
 
+
 class BaseModel:
     """
     BaseModel class
@@ -22,9 +23,11 @@ class BaseModel:
 
     def __str__(self):
         """
-        Returns a string representation of the BaseModel instance.
+        Returns a string representation of the
+        BaseModel instance.
         """
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        return "[{}] ({}) {}".\
+            format(self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
         """
