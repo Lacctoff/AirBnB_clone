@@ -1,17 +1,13 @@
 #!/usr/bin/python3
-
-"""
-Module containing the BaseModel class
-"""
+"""This script is the base model"""
 
 import uuid
 from datetime import datetime
 
 
 class BaseModel:
-    """
-    BaseModel class
-    """
+    """Class from which all other classes will inherit"""
+
     def __init__(self, *args, **kwargs):
         """Initializes instance attributes
 
@@ -38,23 +34,18 @@ class BaseModel:
             self.updated_at = datetime.now()
 
     def __str__(self):
-        """
-        Returns a string representation of the
-        BaseModel instance.
-        """
+        """Returns a string representation instance."""
+
         return "[{}] ({}) {}".\
             format(self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
-        """
-        Updates the updated_at attribute with the current datetime.
-        """
+        """Updates updated_at attribute with the current datetime."""
         self.updated_at = datetime.now()
 
     def to_dict(self):
-        """
-        Returns a dictionary representation of the BaseModel instance.
-        """
+        """Returns a dictionary representation of the BaseModel instance."""
+
         obj_dict = self.__dict__.copy()
         obj_dict['__class__'] = self.__class__.__name__
         obj_dict['created_at'] = self.created_at.isoformat()
